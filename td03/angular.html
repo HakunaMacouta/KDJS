@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="app01" ng-controller="controlleur">
+    <label>
+        <input type="text" ng-model="nombre1"/>
+    </label>
+    <label>
+        <select ng-model="operateur">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+    </label>
+    <label>
+        <input type="text" ng-model="nombre2"/>
+    </label>
+    <span>= {{calculate()}}
+    </span>
+    <div>
+        <ul>
+            <li ng-repeat="pkmn in pkmns">
+                {{pkmn}}
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+    var app = angular.module("app01", []);
+    app.controller("controlleur", function($scope){
+        $scope.calculate = function() {
+            switch($scope.operateur) {
+                case "*":
+                    return parseInt($scope.nombre1)*parseInt($scope.nombre2);
+                    break;
+                case "/":
+                    return parseInt($scope.nombre1)/parseInt($scope.nombre2);
+                    break;
+                case "+":
+                    return parseInt($scope.nombre1)+parseInt($scope.nombre2);
+                    break;
+                case "-":
+                    return parseInt($scope.nombre1)-parseInt($scope.nombre2);
+                    break;
+                default:
+                    return;
+            }
+
+        };
+        $http.get("https://raw.githubusercontent.com/fanzeyi/Pokemon-DB/master/pokedex.json").then(function(response){
+
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(() => {
+
+            let x = $("#coordX");
+            let y =  $("#coordY");
+
+
+            $( "#draggable" ).draggable({
+                connectToSortable: "#sortable",
+                containment:"parent",
+                drag : (e,ui) => {
+                    updatePos(ui);
+                }
+            });
+
+            $( "#sortable" ).sortable({
+            });
+
+            function updatePos(ui){
+                x.text(ui.position.left);
+                y.text(ui.position.top);
+            }
+
+            updatePos($("#draggable"));
+
+            $("#orderBtn").click( () => {
+               $("li").each( () => {
+                   console.log($(this).attr("data-id"));
+                })
+            });
+        });
+    </script>
+    <style>
+        #container {
+            border:solid 1px black;
+            width:500px;
+            height:500px;
+            margin:auto;
+        }
+
+        #draggable {
+            background-color:red;
+            width:50px;
+            height:50px;
+            position:absolute;
+            left:50%;
+            top:20%;
+        }
+    </style>
+</head>
+<body>
+    <div id="display">
+        Position X : <span id="coordX"></span> <br />
+        Position Y : <span id="coordY"></span>
+    </div>
+     <div id="container">
+        <div id="draggable"></div>
+         <ul id="sortable">
+             <li data-id="1">Item1</li>
+             <li data-id="2">Item2</li>
+             <li data-id="3">Item3</li>
+             <li data-id="4">Item4</li>
+             <li data-id="5">Item5</li>
+         </ul>
+         <button id="orderBtn">Order</button>
+    </div>
+
+</body>
+</html>
