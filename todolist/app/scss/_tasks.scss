@@ -1,0 +1,15 @@
+#todolist {
+  height: 100%;
+  overflow: auto;
+  .secondary-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .material-icons:hover {
+      color:blue;
+      cursor: pointer;
+    }
+  }
+}

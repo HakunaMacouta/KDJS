@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/styles.css" />
+    <script type="text/javascript" src="js/sea.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+
+
+
+</head>
+<body>
+<div id="jsi-sea-container" class="row">
+    <main class="col s12 m4 offset-m4">
+        <div class="panel-title"></div>
+        <div class="panel-content">
+            <div class="row">
+                <form id="task-form" class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="Title" value="" id="title" type="text" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="Content" maxlength="60" id="content" type="text" required>
+                            <div class="progress">
+                                <div class="determinate" style="width:0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="form-btn">
+                        <a id="selected-icon" class="btn-floating btn-large waves-effect waves-teal blue lighten-4"><i class="material-icons"></i></a>
+                        <a class="pick-icon btn-floating btn-large waves-effect waves-teal blue lighten-4"><i class="material-icons">color_lens</i></a>
+                        <a class="pick-icon btn-floating btn-large waves-effect waves-teal blue lighten-4"><i class="material-icons">fitness_center</i></a>
+                        <a class="pick-icon btn-floating btn-large waves-effect waves-teal blue lighten-4"><i class="material-icons">gamepad</i></a>
+                        <a class="pick-icon btn-floating btn-large waves-effect waves-teal blue lighten-4"><i class="material-icons">grade</i></a>
+                        <a class="pick-icon btn-floating btn-large waves-effect waves-teal blue lighten-4"><i class="material-icons">info</i></a>
+                        <a class="pick-icon btn-floating btn-large waves-effect waves-teal blue lighten-4"><i class="material-icons">local_grocery_store</i></a>
+                        <a class="pick-icon btn-floating btn-large waves-effect waves-teal blue lighten-4"><i class="material-icons">mail</i></a>
+
+                        <button type="submit" class="btn-floating btn-large waves-effect waves-teal blue"><i class="material-icons">add</i></button>
+                    </div>
+                </form>
+            </div>
+            <ul id="todolist" class="collection">
+            </ul>
+        </div>
+    </main>
+</div>
+</body>
+</html>

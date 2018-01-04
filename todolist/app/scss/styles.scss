@@ -1,0 +1,14 @@
+
+main {
+  vertical-align: middle;
+  background-color:whitesmoke;
+  margin-top:15vh;
+  padding:20px !important;
+  max-height: 70vh;
+  box-shadow: 8px 8px 2px 1px rgba(0, 0, 255, .2);
+}
+
+
+@import "canvas";
+@import "form";
+@import "tasks";

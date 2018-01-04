@@ -1,0 +1,64 @@
+main {
+  vertical-align: middle;
+  background-color: whitesmoke;
+  margin-top: 15vh;
+  padding: 20px !important;
+  max-height: 70vh;
+  box-shadow: 8px 8px 2px 1px rgba(0, 0, 255, 0.2); }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; }
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -10; }
+
+#jsi-sea-container {
+  width: 100%;
+  height: 100%; }
+
+#task-form .input-field {
+  margin: 0; }
+
+#task-form input {
+  margin: 0; }
+
+#task-form #form-btn {
+  display: flex;
+  justify-content: space-between; }
+
+#task-form #content {
+  border: none; }
+  #task-form #content:focus {
+    border-bottom: none; }
+
+#task-form .progress {
+  margin: 0; }
+
+#task-form .input-field input[type=text]:focus {
+  border-bottom: 1px solid #64b5f6;
+  box-shadow: 0 1px 0 0 #64b5f6; }
+
+#task-form .determinate {
+  background-color: #64b5f6; }
+
+#task-form .progress {
+  background-color: #bbdefb; }
+
+#todolist {
+  height: 100%;
+  overflow: auto; }
+  #todolist .secondary-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; }
+    #todolist .secondary-content .material-icons:hover {
+      color: blue;
+      cursor: pointer; }

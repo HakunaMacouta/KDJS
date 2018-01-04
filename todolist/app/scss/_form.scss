@@ -1,0 +1,35 @@
+#task-form {
+  .input-field {
+    margin:0;
+  }
+  input {
+    margin:0;
+  }
+  #form-btn {
+    display:flex;
+    justify-content: space-between;
+  }
+
+  #content {
+    border:none;
+    &:focus {
+      border-bottom: none;
+    }
+  }
+  .progress {
+    margin:0;
+  }
+
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid #64b5f6;
+    box-shadow: 0 1px 0 0 #64b5f6;
+  }
+
+  .determinate {
+    background-color:#64b5f6;
+  }
+
+  .progress {
+    background-color: #bbdefb ;
+  }
+}
