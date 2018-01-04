@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<head>
+ 
+    <meta charset="utf-8" />
+ 
+    <title>Titre de la page</title>
+    <meta name="description" content="Description de la page">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
+    <script src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+		var submited = false;
+    	$(document).ready(function(){
+			$("form").submit(function () {
+			    var content = null;
+			    if(submited === false) {
+			        $("#recipient").empty();
+				}
+				switch($("select[name=type]").val()) {
+					case "h1":
+					    content = "<h1>" + $("#contenu").val() + "</h1>";
+					    break;
+					case "h2":
+                        content = "<h2>" + $("#contenu").val() + "</h2>";
+					    break;
+					case "h3":
+					    content = "<h3>" + $("#contenu").val() + "</h3>";
+					case "p":
+                        content = "<p>" + $("#contenu").val() + "</p>";
+					    break;
+					case "img":
+                        content = "<img src='" + $("#contenu").val() + "'/>";
+					    break;
+					case "a":
+                        content = "<a href='"+ $("#contenu").val() + "'>" + $("#contenu").val() + "</a>";
+					    break;
+					case "input:text":
+                        content = "<input type='text' placeholder='" + $("#contenu").val() + "'/>";
+					    break;
+					case "input:submit":
+                        content = "<input type='submit' value='" + $("#contenu").val() + "'/>";
+					    break;
+					case "label":
+                        content = "<label>" + $("#contenu").val() + "</label>";
+					    break;
+					default:
+				}
+
+				if($("#ajoutAvant").is(":checked")) {
+                    $("#recipient").prepend(content);
+				} else {
+                    $("#recipient").append(content);
+                }
+                submited = true;
+				return false;
+            });
+
+
+			$("input[type=button]").click(function () {
+				if($(this).attr("value") === "Réinitialiser") {
+				    $("#recipient").empty();
+                }
+                else if($(this).attr("value") === "Générer" ) {
+				    $("#myModal .modal-content code").empty();
+                    $("#myModal .modal-content code").text($("#recipient").html());
+                    $("#myModal").fadeIn(800);
+				}
+            })
+
+			$("span").click(function() {
+			    $("#myModal").fadeOut(800);
+			})
+    	});
+   	</script>
+</head>
+<body>
+	<div id="myModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<code></code>
+		</div>
+
+	</div>
+	<div id="generateur">
+		<form action="#">
+			<label for="type">Type d'élément</label>
+			<br />
+			<select name="type" id="type">
+				<option value="h1">Titre (h1)</option>
+				<option value="h2">Titre (h2)</option>
+				<option value="h3">Titre (h3)</option>
+				<option value="p">Paragraphe (p)</option>
+				<option value="img">Image (img)</option>
+				<option value="a">Lien (a))</option>
+				<option value="input:text">Champ de texte (input:text)</option>
+				<option value="input:submit">Bouton (input:submit)</option>
+				<option value="label">Label (label)</option>
+			</select>
+			<br />
+			<label for="contenu">Contenu de l'élément</label><br />
+			<input type="text" placeholder="Contenu" id="contenu" name="contenu" />
+			<br />
+			<label for="ajoutAvant">Ajouter avant</label>
+			<input type="checkbox" name="ajoutAvant" id="ajoutAvant" />
+			<br />
+			<input type="submit" value="Ajouter" />
+			<input type="button" value="Réinitialiser" />
+			<input type="button" value="Générer" />
+		</form>
+	</div>
+
+	<div id="recipient">
+		La page est vide pour l'instant...
+	</div>
+
+
+
+
+	<!-- Style -->
+	<style>
+		body{
+			font-family: 'Quicksand', sans-serif;
+			background-color: #FCFCFC;
+		}
+
+		#generateur{
+			float: right;
+			border: 1px solid #C1C2CC;
+			padding: 15px;
+			border-radius: 3px;
+			background: #F1F1F1;
+		}
+
+		#generateur label{ font-weight: bold;}
+		#generateur select{ margin-bottom: 10px; width: 200px; border: 1px solid #666; }
+		#generateur input[type=text]{ margin-bottom: 10px; width: 188px; border: 1px solid #666; padding: 5px; border-radius: 3px;}
+		#generateur input[type=checkbox]{ margin-bottom: 10px; }
+
+		#generateur input[type=submit]{ background-color: #83D833; }
+		#generateur input[type=button]{ background-color: #E80612; }
+		#generateur input[type=button]:last-child{ background-color: #FCC325; }
+		#generateur input[type=submit],
+		#generateur input[type=button]{ color: white; border-radius: 3px; border: none; padding: 9px;}
+		#generateur input[type=submit]:hover,
+		#generateur input[type=button]:hover{ opacity: 0.7; cursor: pointer;}
+
+		#recipient{
+			margin-right: 250px;
+			padding: 15px;
+			border-radius: 3px;
+			border: 1px solid #C1C2CC;
+		}
+
+		.modal {
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 1; /* Sit on top */
+			left: 0;
+			top: 0;
+			width: 100%; /* Full width */
+			height: 100%; /* Full height */
+			background-color: rgb(0,0,0); /* Fallback color */
+			background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+		}
+
+		/* Modal Content/Box */
+		.modal-content {
+			background-color: #fefefe;
+			margin: 15% auto; /* 15% from the top and centered */
+			padding: 20px;
+			border: 1px solid #888;
+			overflow: auto;
+			width: 70%; /* Could be more or less, depending on screen size */
+		}
+
+		/* The Close Button */
+		.close {
+			color: #aaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: black;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	</style>
+</body>
+ 
+</html>
