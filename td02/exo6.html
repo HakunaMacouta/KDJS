@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+ 
+        <meta charset="utf-8" />
+ 
+    <title>Kit de Survie JS</title>
+    <meta name="description" content="">
+ 
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
+    <style>
+    	body{ font-family: 'Quicksand', sans-serif; 
+    		margin: 0; }
+
+    	.leftPanel{
+    		float: left;
+    		width: 200px;
+    		padding: 25px;
+    		background-color: #F9F9F9;
+    	}
+
+    	.leftPanel input[type=text]{   width: 178px; border: 1px solid #C1C2CC; padding: 10px; font-size: 16px; }
+    	.leftPanel input[type=submit]{ width: 200px; border: none; background-color: orange; color: white; padding: 10px; margin-top: 10px; text-transform: uppercase; font-size: 14px;}
+    	.leftPanel input[type=submit]:hover{ cursor: pointer; }
+    	.leftPanel form{ border-bottom: 1px solid #F1F1F1; padding-bottom: 10px; margin-bottom: 10px;}
+
+    	.leftPanel a{color: #C1C2CC; }
+
+
+
+    	.centerPanel{padding: 25px; margin-left: 250px; }
+	</style>
+
+    <script src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		// Ecrire les scripts ici
+    	});
+   	</script>
+</head>
+<body>
+	<div class="leftPanel">
+		<form action="#">
+			<input type="text" name="search" placeholder="Bordeaux, London ..." />
+			<input type="submit" value="Rechercher" />
+		</form>
+		Résultats:
+		<ul>
+			<li><a href="#" data-id="X">Résultat 1</a></li>
+			<li><a href="#" data-id="X">Résultat 2</a></li>
+			<li><a href="#" data-id="X">Résultat 3</a></li>
+			<li><a href="#" data-id="X">Résultat 4</a></li>
+		</ul>
+	</div>
+
+	<div class="centerPanel">
+		Résultat
+	</div>
+</body>
+ 
+</html>

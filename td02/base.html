@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<head>
+ 
+    <meta charset="utf-8" />
+ 
+    <title>Kit de Survie JS</title>
+    <meta name="description" content="">
+ 
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
+    <style>
+    	body{ font-family: 'Quicksand', sans-serif; }
+
+    	
+	</style>
+
+    <script src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+            $("#buttons").find("button:first-child").click(function () {
+                $("#content").empty();
+                $("#content").load("http://www.labri.fr/perso/pbiasutt/KDJS/TD02/exo1.php #conteneur1", function () {
+                    console.log("Chargement en cours...");
+                });
+            });
+
+            $("#buttons").find("button:last-child").click(function () {
+                $("#content").empty();
+                $("#content").load("http://www.labri.fr/perso/pbiasutt/KDJS/TD02/exo1.php #conteneur2", function () {
+                    console.log("Chargement en cours...");
+                });
+
+            });
+
+            $.ajax({
+                url: "http://www.labri.fr/perso/pbiasutt/KDJS/TD02/functions.php",
+                dataType: "script",
+                beforeSend: function(){ console.log("Envoi de la requete ..."); },
+                success: function(data){
+                    console.log("success");
+                },
+                method:"GET"
+            });
+
+            $.ajax({
+                url: "http://www.labri.fr/perso/pbiasutt/KDJS/TD02/characters.php",
+                dataType: "json",
+                beforeSend: function(){ console.log("Envoi de la requete json..."); },
+                complete: function(data){
+                    var got = JSON.parse(data.responseText);
+                    console.log(got);
+                    for(var char in got) {
+                        //$("#gameofthrone ul").append($("<li></li>").text(got[char].name));
+                    }
+                },
+                method:"GET"
+            });
+
+            $("#form form").submit(function (e) {
+                $("#rep").html(isPrime($("#nb").val()) ? "Le nombre est premier" : "le nombre est pas premier");
+                return false;
+            });
+
+            $("#geojson form").submit(function (e) {
+                var param =$("#type option:selected").text() + "=" + $("#value").val();
+                var url="https://geo.api.gouv.fr/communes?" + param;
+                $.ajax({
+                    url: url,
+                    dataType: "json",
+                    beforeSend: function(){ console.log("Envoi de la requete json..."); },
+                    complete: function(data){
+                        var villes = JSON.parse(data.responseText);
+                        $.each(villes, function (key, item) {
+                            $("#geojson ul").append($("<li></li>").text(item.nom));
+                        })
+                    },
+                    method:"GET"
+                });
+
+
+                return false;
+            });
+    	});
+   	</script>
+</head>
+<body>
+<div id="buttons">
+    <button id="1">Conteneur1</button>
+    <button id="2">Conteneur2</button>
+</div>
+<div id="content">
+
+</div>
+<div id="form">
+    <form>
+        <label>
+            Text :
+            <input id="nb" type="number" />
+        </label>
+        <input type="submit" />
+    </form>
+    <span id="rep"></span>
+</div>
+
+<div id="gameofthrone">
+    <ul>
+
+    </ul>
+</div>
+<div id="geojson">
+    <form>
+        <label for="type">Type :</label>
+        <select id="type">
+            <option>nom</option>
+            <option>codePostal</option>
+            <option>codeDepartement</option>
+        </select>
+        <label>
+            <input type="text" id="value" />
+        </label>
+        <input type="submit" />
+    </form>
+    <ul>
+
+    </ul>
+    <div id="icenfire">
+        <div style="width:50%;">
+            <form>
+                <label>
+                    Nom:
+                    <input type="text" id="charname"/>
+                </label>
+                <ul>
+
+                </ul>
+            </form>
+        </div>
+        <div style="width:50%;">
+        </div>
+
+    </div>
+</div>
+</body>
+ 
+</html>
